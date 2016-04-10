@@ -9,7 +9,7 @@ A set of UI components, in the purpose of introducing [Material Design][md] to a
 
 [npm-badge]: https://img.shields.io/npm/v/react-native-material-kit.svg
 [npm]: https://www.npmjs.com/package/react-native-material-kit
-[rn-badge]: https://img.shields.io/badge/react--native-v0.20.x-05A5D1.svg
+[rn-badge]: https://img.shields.io/badge/react--native-v0.24.x-05A5D1.svg
 [rn]: https://facebook.github.io/react-native
 [md]: http://www.google.com/design/spec/material-design/introduction.html
 [license-badge]: https://img.shields.io/dub/l/vibe-d.svg
@@ -62,16 +62,15 @@ Now run `pod install`. This will create an Xcode workspace containing all necess
   }
 
   ```
-1. Import `com.github.xinthink.rnmk.ReactMaterialKitPackage` and register it to the `ReactInstanceManager`, in your `MainActivity` (or equivalent):
+1. Import `com.github.xinthink.rnmk.ReactMaterialKitPackage` and register it in your `MainActivity` (or equivalent):
   ```java
-  mReactInstanceManager = ReactInstanceManager.builder()
-      .setApplication(getApplication())
-      ...
-      .addPackage(new MainReactPackage())
-      .addPackage(new ReactMaterialKitPackage())
-      ...
-      .build();
-
+  @Override
+  protected List<ReactPackage> getPackages() {
+      return Arrays.asList(
+              new MainReactPackage(),
+              new ReactMaterialKitPackage()
+      );
+  }
   ```
 
 Finally, you're good to go, feel free to require `react-native-material-kit` in your JS files.
@@ -285,6 +284,10 @@ const SliderWithRange = mdl.RangeSlider.slider()
     max: curValue.max,
     })
   }
+  onConfirm={(curValue) => {
+    console.log("Slider drag ended");
+    console.log(curValue);
+  }}
   />
 ```
 
@@ -458,11 +461,11 @@ setTheme({radioStyle: {
 
 
 ## About
-This project began with porting [MaterialKit][], thanks [@nghialv][] for the great work!👍🖖
+This project is inspired by [MaterialKit][], thanks [@nghialv][] for the great work!👍🖖
 
-But before long, I decided to rewrite all the components in JSX, with no or limited help of native code, and the rewriting is in progress.
+But I rewrote almost all the components in JSX, with limited help of native code.
 
-And lastly, it’s the very beginning of the project, lots of work to be done, ***contributions*** are welcome!🎉🍻
+And lastly, it’s lots of work to be done, ***contributions*** are welcome!🎉🍻
 
 [@nghialv]: https://github.com/nghialv
 [MaterialKit]: https://github.com/nghialv/MaterialKit
