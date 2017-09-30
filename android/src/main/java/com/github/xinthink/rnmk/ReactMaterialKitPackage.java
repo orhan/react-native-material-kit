@@ -22,7 +22,7 @@ public class ReactMaterialKitPackage implements ReactPackage {
         return Collections.emptyList();
     }
 
-    @Override
+    // Deprecated in RN0.47+
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
